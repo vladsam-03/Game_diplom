@@ -9,16 +9,23 @@ public class StepNPCNew : MonoBehaviour
     public bool step;
     public float speed;
 
+    private Hero thisHero;
+
+    private void Awake()
+    {
+        thisHero = GetComponent<Hero>();
+    }
 
     private void Update()
     {
         if (step)
         {
-            transform.position = Vector3.MoveTowards(transform.position, GetComponent<Hero>().SelectTile.transform.position, Time.deltaTime * speed);
-            transform.LookAt(GetComponent<Hero>().SelectTile.transform.position);
-            if (transform.position == GetComponent<Hero>().SelectTile.transform.position)
+            transform.position = Vector3.MoveTowards(transform.position, thisHero.SelectTile.transform.position, Time.deltaTime * speed);
+            transform.LookAt(thisHero.SelectTile.transform.position);
+            if (transform.position == thisHero.SelectTile.transform.position)
             {
                 step = false;
+                thisHero.AP--;
             }
         }
     }

@@ -24,7 +24,7 @@ public class SelectHero : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.GetComponent<Player>() != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                if (hit.collider.gameObject.GetComponent<Player>() != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && hit.collider.gameObject.GetComponent<StepNPCNew>().step != true)
                 {
                         SelectedHero = hit.collider.gameObject;
                         if (Tiles.Count > 0)
@@ -39,6 +39,7 @@ public class SelectHero : MonoBehaviour
                             }
                             Tiles = new List<GameObject>();
                         }
+                        if(SelectedHero.GetComponent<Hero>().AP > 0)
                         SetRay(hit.collider.gameObject);
                         Panel.SetActive(true);
                         Porstrait.SetActive(true);
@@ -113,7 +114,8 @@ public class SelectHero : MonoBehaviour
     IEnumerator WaitNewRay()
     {
         yield return new WaitForSeconds(0.5f);
-        SetRay(SelectedHero);
+        if (SelectedHero.GetComponent<Hero>().AP > 0)
+            SetRay(SelectedHero);
     }
 
     private void DeselectTile()
