@@ -9,6 +9,7 @@ public class Hero : MonoBehaviour
     public Button SelectButton;
     public Tile SelectTile;
     public int AP;
+    public int MaxAP;
     public int HP;
     public int MaxHP;
     public int MP;

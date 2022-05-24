@@ -9,6 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Mm]ono[Bb]leeding[Ee]dge/
+/[Mm]e game_[Dd]ata/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -33,6 +35,9 @@
 ExportedObj/
 .consulo/
 *.csproj
+*.meta
+*.exe
+*.dll
 *.unityproj
 *.sln
 *.suo

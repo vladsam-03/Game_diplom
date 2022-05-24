@@ -9,4 +9,14 @@ public class SettingScenes : MonoBehaviour
     {
         SceneManager.LoadScene("3D_Scene");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void StartScane()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

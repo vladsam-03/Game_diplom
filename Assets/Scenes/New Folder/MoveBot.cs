@@ -36,6 +36,7 @@ public class MoveBot : MonoBehaviour
     public void StartMove()
     {
         StartCoroutine(StartTurn());
+        //GetComponent<Hero>().AP == 3; //после нажатия на кнопку ап героев игрока должно возврашяться
     }
 
 
@@ -57,52 +58,55 @@ public class MoveBot : MonoBehaviour
                 Tiles = new List<GameObject>();
                 SetRay(bot);
                 if (bot.GetComponent<Enemy>().Target.IsExploredEnemy == false)
-                {
+                {// возможно здесь сделать так чтобы получать id биома и делать весь биом true
                     bot.GetComponent<Enemy>().Target.IsExploredEnemy = true;
-                }
-                if (bot.GetComponent<Enemy>().CurrentTarget != null)
-                { 
-                    bot.GetComponent<Enemy>().LastTile = bot.GetComponent<Enemy>().CurrentTarget;
-                    bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
-                }
-                if (Tiles.Count == 0)
-                {
-                    break;
-                }
-                else if (Tiles.Count == 1 && Tiles[0].GetComponent<Tile>().IsExploredEnemy)
-                {
-                    Tiles[0].GetComponent<Tile>().Last = false;
-                    bot.GetComponent<Enemy>().CurrentTarget = Tiles[0];
                 }
                 else
                 {
-                    float min = float.MaxValue;
-
-                    foreach (var tile in Tiles)
+                    if (bot.GetComponent<Enemy>().CurrentTarget != null)
                     {
-                        if (!tile.GetComponent<Tile>().Last && tile.GetComponent<Tile>().IsExploredEnemy)
-                        {
-                            float distance = Vector3.Distance(tile.transform.position, bot.GetComponent<Enemy>().Target.transform.position);
-                            if (distance < min)
-                            {
-                                min = distance;
-                                bot.GetComponent<Enemy>().CurrentTarget = tile;
-                            }
-                        }
-                        else if (tile.GetComponent<Tile>().Last)
-                            tile.GetComponent<Tile>().Last = false;
+                        bot.GetComponent<Enemy>().LastTile = bot.GetComponent<Enemy>().CurrentTarget;
+                        bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
                     }
-                }
-                bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = false;
-                CurrentBot = bot;
-                isMove = true;
-                while (true)
-                {
-                    if (isMove == false)
+                    if (Tiles.Count == 0)
                     {
                         break;
                     }
-                    yield return null;
+                    else if (Tiles.Count == 1 && Tiles[0].GetComponent<Tile>().IsExploredEnemy)
+                    {
+                        Tiles[0].GetComponent<Tile>().Last = false;
+                        bot.GetComponent<Enemy>().CurrentTarget = Tiles[0];
+                    }
+                    else
+                    {
+                        float min = float.MaxValue;
+
+                        foreach (var tile in Tiles)
+                        {
+                            if (!tile.GetComponent<Tile>().Last && tile.GetComponent<Tile>().IsExploredEnemy)
+                            {
+                                float distance = Vector3.Distance(tile.transform.position, bot.GetComponent<Enemy>().Target.transform.position);
+                                if (distance < min)
+                                {
+                                    min = distance;
+                                    bot.GetComponent<Enemy>().CurrentTarget = tile;
+                                }
+                            }
+                            else if (tile.GetComponent<Tile>().Last)
+                                tile.GetComponent<Tile>().Last = false;
+                        }
+                    }
+                    bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = false;
+                    CurrentBot = bot;
+                    isMove = true;
+                    while (true)
+                    {
+                        if (isMove == false)
+                        {
+                            break;
+                        }
+                        yield return null;
+                    }
                 }
             }
             bot.GetComponent<Hero>().AP = 3;

@@ -101,20 +101,21 @@ public class SelectHero : MonoBehaviour
 
     private void Stats()
     {
-        Panel.transform.GetChild(0).gameObject.GetComponent<Text>().text = SelectedHero.GetComponent<Hero>().Name; //ОД ДОБАВИТЬ ОБЯЗАТЕЛЬНО
         Panel.transform.GetChild(0).gameObject.GetComponent<Text>().text = SelectedHero.GetComponent<Hero>().Name;
         Panel.transform.GetChild(2).gameObject.GetComponent<Slider>().maxValue = SelectedHero.GetComponent<Hero>().MaxHP;
         Panel.transform.GetChild(2).gameObject.GetComponent<Slider>().value = SelectedHero.GetComponent<Hero>().HP;
-        Panel.transform.GetChild(2).gameObject.GetComponent<Slider>().maxValue = SelectedHero.GetComponent<Hero>().MaxHP;
+        Panel.transform.GetChild(2).gameObject.GetComponent<Slider>().maxValue = SelectedHero.GetComponent<Hero>().MaxMP;
         Panel.transform.GetChild(3).gameObject.GetComponent<Slider>().value = SelectedHero.GetComponent<Hero>().MP;
         Panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = SelectedHero.GetComponent<Hero>().Attack.ToString();
         Panel.transform.GetChild(7).gameObject.GetComponent<Text>().text = SelectedHero.GetComponent<Hero>().Defence.ToString();
+        Panel.transform.GetChild(8).gameObject.GetComponent<Slider>().maxValue = SelectedHero.GetComponent<Hero>().MaxAP; //не работает почему то(
+        Panel.transform.GetChild(8).gameObject.GetComponent<Slider>().value = SelectedHero.GetComponent<Hero>().AP;
     }
 
     IEnumerator WaitNewRay()
     {
         yield return new WaitForSeconds(0.5f);
-        if (SelectedHero.GetComponent<Hero>().AP > 0)
+        //if (SelectedHero.GetComponent<Hero>().AP > 0)
             SetRay(SelectedHero);
     }
 
