@@ -773,7 +773,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635931584}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: f531e09e2ad2fb440b4eed7605863143, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 5047e2d453c4ded4a88d8b2028c126ae, type: 2}
 --- !u!1 &785867142
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20568b80b1187e44384c05f36d27047a, type: 2}
+  - {fileID: 2100000, guid: f7537f9336656ac4990859fcc3070544, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6599,7 +6599,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c833a498ceaab049bb3414ff23c5ec4, type: 2}
+  - {fileID: 2100000, guid: 559c7c639f5b5c446a8d00e2d2d66764, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

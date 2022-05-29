@@ -48,8 +48,12 @@ public class MoveBot : MonoBehaviour
             {
                 SetFirstTarget(bot);
             }
-            for (int i = bot.GetComponent<Hero>().AP; i > 0; i--)
+            for (int i = (int)bot.GetComponent<Hero>().AP; i > 0; i--)
             {
+                //if (Vector3.Distance(bot.transform.position, ) == 30) // атаку сделать не смог)
+                //{
+                //    hit.collider.gameObject.GetComponent<Enemy>().HP -= bot.GetComponent<Enemy>().Attack;
+                //}
                 if (bot.GetComponent<Enemy>().CurrentTarget != null && bot.GetComponent<Enemy>().CurrentTarget.transform == bot.GetComponent<Enemy>().Target.transform)
                 {
                     SetTarget(bot);
@@ -66,6 +70,7 @@ public class MoveBot : MonoBehaviour
                     if (bot.GetComponent<Enemy>().CurrentTarget != null)
                     {
                         bot.GetComponent<Enemy>().LastTile = bot.GetComponent<Enemy>().CurrentTarget;
+                        bot.GetComponent<Enemy>().LastTile.GetComponent<Tile>().IsAttackPlayer = false;
                         bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
                     }
                     if (Tiles.Count == 0)
@@ -89,6 +94,7 @@ public class MoveBot : MonoBehaviour
                                 if (distance < min)
                                 {
                                     min = distance;
+                                    tile.GetComponent<Tile>().IsAttackPlayer = true;
                                     bot.GetComponent<Enemy>().CurrentTarget = tile;
                                 }
                             }
@@ -195,6 +201,11 @@ public class MoveBot : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveBot(GameObject bot)
+    {
+        Bots.Remove(bot);
     }
 
 }

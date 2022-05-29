@@ -102,7 +102,7 @@ MonoBehaviour:
   MaxHP: 15
   MP: 10
   MaxMP: 10
-  Attack: 10
+  Attack: 5
   Defence: 1
 --- !u!1 &2446683793390341231
 GameObject:

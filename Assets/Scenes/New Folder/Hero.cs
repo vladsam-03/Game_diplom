@@ -8,14 +8,14 @@ public class Hero : MonoBehaviour
     public string Name;
     public Button SelectButton;
     public Tile SelectTile;
-    public int AP;
-    public int MaxAP;
-    public int HP;
-    public int MaxHP;
-    public int MP;
-    public int MaxMP;
-    public int Attack;
-    public int Defence;
+    public float AP;
+    public float MaxAP;
+    public float HP;
+    public float MaxHP;
+    public float MP;
+    public float MaxMP;
+    public float Attack;
+    public float Defence;
 
 
 }
