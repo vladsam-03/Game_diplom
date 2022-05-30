@@ -10,8 +10,8 @@ public class SelectHero : MonoBehaviour
     public GameObject Porstrait;
     private List<GameObject> Tiles = new List<GameObject>();
     public List<GameObject> RIP;
-    public  GameObject SelectedPlayer;
-    public  GameObject SelectedEnemy;
+    public GameObject SelectedPlayer;
+    public GameObject SelectedEnemy;
     private bool isPreparation;
     private bool isSelectPlayer;
     private MoveBot moveBot;
@@ -39,29 +39,31 @@ public class SelectHero : MonoBehaviour
                 {
                     SelectedPlayer = hit.collider.gameObject;
                     isSelectPlayer = true;
-                    if (Tiles.Count > 0)
-                    {
-                        foreach (var tile in Tiles)
-                        {
-                            tile.GetComponent<Tile>().CanUse = false;
-                            tile.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                            tile.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                            tile.transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                            tile.transform.GetChild(3).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                        }
-                        Tiles = new List<GameObject>();
-                    }
                     if (SelectedPlayer.GetComponent<Hero>().AP > 0)
+                    {
+                        if (Tiles.Count > 0)
+                        {
+                            foreach (var tile in Tiles)
+                            {
+                                tile.GetComponent<Tile>().CanUse = false;
+                                tile.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                                tile.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                                tile.transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                                tile.transform.GetChild(3).gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                            }
+                            Tiles = new List<GameObject>();
+                        }
                         SetRay(hit.collider.gameObject);
-                    Panel.SetActive(true);
-                    MoveCameraToPlayer(SelectedPlayer);
+                        Panel.SetActive(true);
+                        MoveCameraToPlayer(SelectedPlayer);
+                    }
                 }
                 else if (hit.collider.gameObject.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AP > 0
-                    && SelectedEnemy == hit.collider.gameObject && Vector3.Distance(SelectedPlayer.transform.position, hit.collider.gameObject.transform.position) == 30 
+                    && SelectedEnemy == hit.collider.gameObject && Vector3.Distance(SelectedPlayer.transform.position, hit.collider.gameObject.transform.position) == 30
                     && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     hit.collider.gameObject.GetComponent<Enemy>().HP -= SelectedPlayer.GetComponent<Player>().Attack;
-                        SelectedPlayer.GetComponent<Hero>().AP--;
+                    SelectedPlayer.GetComponent<Hero>().AP--;
                     if (hit.collider.gameObject.GetComponent<Enemy>().HP <= 0)
                     {
                         Vector3 Rip = SelectedEnemy.transform.position;
@@ -75,7 +77,7 @@ public class SelectHero : MonoBehaviour
 
                         int indexbiom = Random.Range(0, RIP.Count);
                         var Biome = RIP[indexbiom];
-                        GameObject SelectedBiome = Instantiate(Biome.gameObject, new Vector3(Rip.x,Rip.y,Rip.z), Quaternion.Euler(0,RipRotation,0));
+                        GameObject SelectedBiome = Instantiate(Biome.gameObject, new Vector3(Rip.x, Rip.y, Rip.z), Quaternion.Euler(0, RipRotation, 0));
                     }
                     isPreparation = false;
                 }
@@ -84,7 +86,7 @@ public class SelectHero : MonoBehaviour
                     SelectedEnemy = hit.collider.gameObject;
                     isSelectPlayer = false;
                     Panel.SetActive(true);
-                     
+
                     MoveCameraToPlayer(SelectedEnemy);
                     if (SelectedPlayer != null)
                     {
@@ -159,8 +161,10 @@ public class SelectHero : MonoBehaviour
     IEnumerator WaitNewRay()
     {
         yield return new WaitForSeconds(0.5f);
-        //if (SelectedHero.GetComponent<Hero>().AP > 0)
-        SetRay(SelectedPlayer);
+        if (SelectedPlayer.GetComponent<Hero>().AP > 0)
+        {
+            SetRay(SelectedPlayer);
+        }
     }
 
     private void DeselectTile()
@@ -229,7 +233,7 @@ public class SelectHero : MonoBehaviour
                 }
                 else
                 {
-                    if (hit.collider.gameObject.GetComponent<Tile>().IsAttackPlayer == true) //изменить на Player
+                    if (hit.collider.gameObject.GetComponent<Tile>().IsAttackPlayer == true)
                     {
                         hit.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
                         hit.collider.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -239,7 +243,7 @@ public class SelectHero : MonoBehaviour
                     }
                 }
             }
-            
+
         }
     }
 }
