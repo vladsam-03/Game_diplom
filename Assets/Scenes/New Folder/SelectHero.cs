@@ -15,6 +15,10 @@ public class SelectHero : MonoBehaviour
     private bool isPreparation;
     private bool isSelectPlayer;
     private MoveBot moveBot;
+    private bool isBarrierPlusX;
+    private bool isBarrierMinusX;
+    private bool isBarrierPlusZ;
+    private bool isBarrierMinusZ;
 
     void Start()
     {
@@ -53,7 +57,8 @@ public class SelectHero : MonoBehaviour
                             }
                             Tiles = new List<GameObject>();
                         }
-                        SetRay(hit.collider.gameObject);
+                        SetRayHorizontal(SelectedPlayer);
+                        SetRay(SelectedPlayer);
                         Panel.SetActive(true);
                         MoveCameraToPlayer(SelectedPlayer);
                     }
@@ -163,6 +168,7 @@ public class SelectHero : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (SelectedPlayer.GetComponent<Hero>().AP > 0)
         {
+            SetRayHorizontal(SelectedPlayer);
             SetRay(SelectedPlayer);
         }
     }
@@ -186,6 +192,36 @@ public class SelectHero : MonoBehaviour
         }
     }
 
+    public void SetRayHorizontal(GameObject gameObject)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    Ray ray = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y +5, gameObject.transform.position.z), gameObject.transform.right * 30);
+                    //Debug.DrawRay(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.forward * 30, Color.red);
+                    SetHighlightingHorizontal(ray, 0);
+                    break;
+                case 1:
+                    Ray ray1 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.right * -30);
+                    //Debug.DrawRay(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.forward * -30, Color.red);
+                    SetHighlightingHorizontal(ray1, 1);
+                    break;
+                case 2:
+                    Ray ray2 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.forward * 30);
+                    //Debug.DrawRay(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.right * 30, Color.red);
+                    SetHighlightingHorizontal(ray2, 2);
+                    break;
+                case 3:
+                    Ray ray3 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.forward * -30);
+                    //Debug.DrawRay(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.right * -30, Color.red);
+                    //Пример дебага для луча 
+                    SetHighlightingHorizontal(ray3, 3);
+                    break;
+            }
+        }
+    }
     public void SetRay(GameObject gameObject)
     {
         for (int i = 0; i < 4; i++)
@@ -193,24 +229,68 @@ public class SelectHero : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Ray ray = new Ray(new Vector3(gameObject.transform.position.x + 30, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.up * -5);
-                    SetHighlighting(ray);
-                    break;
+                    if (!isBarrierPlusX)
+                    {
+                        Ray ray = new Ray(new Vector3(gameObject.transform.position.x + 30, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.up * -5);
+                        SetHighlighting(ray);
+                    }
+                    isBarrierPlusX = false;
+                        break;
                 case 1:
-                    Ray ray1 = new Ray(new Vector3(gameObject.transform.position.x - 30, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.up * -5);
-                    SetHighlighting(ray1);
+                    if (!isBarrierMinusX)
+                    {
+                        Ray ray1 = new Ray(new Vector3(gameObject.transform.position.x - 30, gameObject.transform.position.y + 5, gameObject.transform.position.z), gameObject.transform.up * -5);
+                        SetHighlighting(ray1);
+                    }
+                    isBarrierMinusX = false;
                     break;
                 case 2:
-                    Ray ray2 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z + 30), gameObject.transform.up * -5);
-                    SetHighlighting(ray2);
+                    if (!isBarrierPlusZ)
+                    {
+                        Ray ray2 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z + 30), gameObject.transform.up * -5);
+                        SetHighlighting(ray2);
+                    }
+                    isBarrierPlusZ = false;
                     break;
                 case 3:
-                    Ray ray3 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z - 30), gameObject.transform.up * -5);
-                    //Пример дебага для луча 
-                    //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 30, transform.position.z - 30), transform.up * -30, Color.red);
-                    SetHighlighting(ray3);
+                    if (!isBarrierMinusZ)
+                    {
+                        Ray ray3 = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, gameObject.transform.position.z - 30), gameObject.transform.up * -5);
+                        //Пример дебага для луча 
+                        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 30, transform.position.z - 30), transform.up * -30, Color.red);
+                        SetHighlighting(ray3);
+                    }
+                    isBarrierMinusZ = false;
                     break;
             }
+        }
+    }
+
+    private void SetHighlightingHorizontal(Ray ray, int compas)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.CompareTag("barrier"))
+            {
+                switch (compas)
+                {
+                    case 0:
+                        isBarrierPlusX = true;
+                            break;
+                    case 1:
+                        isBarrierMinusX = true;
+                            break;
+                    case 2:
+                        isBarrierPlusZ = true;
+                            break;
+                    case 3:
+                        isBarrierMinusZ = true;
+                            break;
+
+                }
+            }
+
         }
     }
 
