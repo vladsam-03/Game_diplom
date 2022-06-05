@@ -35,7 +35,6 @@
 ExportedObj/
 .consulo/
 *.csproj
-*.meta
 *.exe
 *.dll
 *.unityproj
