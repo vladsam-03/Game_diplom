@@ -44,7 +44,7 @@ public class SelectHero : MonoBehaviour
                 {
                     SelectedPlayer = hit.collider.gameObject;
                     isSelectPlayer = true;
-                    if (SelectedPlayer.GetComponent<Hero>().AP > 0 && SelectedPlayer.GetComponent<Player>().IsCanMove)
+                    if (SelectedPlayer.GetComponent<Hero>().MoveAP > 0 && SelectedPlayer.GetComponent<Player>().IsCanMove)
                     {
                         if (Tiles.Count > 0)
                         {
@@ -64,7 +64,7 @@ public class SelectHero : MonoBehaviour
                         MoveCameraToPlayer(SelectedPlayer);
                     }
                 }
-                else if (hit.collider.gameObject.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AP > 0
+                else if (hit.collider.gameObject.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AttackAP > 0
                     && SelectedEnemy == hit.collider.gameObject && Vector3.Distance(SelectedPlayer.transform.position, hit.collider.gameObject.transform.position) == 30
                     && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
@@ -74,7 +74,7 @@ public class SelectHero : MonoBehaviour
                         MeshRenderer[] meshRenderers = hit.collider.gameObject.transform.GetComponentsInChildren<MeshRenderer>();
                         StartCoroutine(AttackColor(meshRenderers));
                     }
-                    SelectedPlayer.GetComponent<Hero>().AP--;
+                    SelectedPlayer.GetComponent<Hero>().AttackAP--;
                     if (hit.collider.gameObject.GetComponent<Enemy>().HP <= 0)
                     {
                         Vector3 Rip = SelectedEnemy.transform.position;
@@ -166,13 +166,13 @@ public class SelectHero : MonoBehaviour
         Panel.transform.GetChild(3).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().MP / selectedHero.GetComponent<Hero>().MaxMP;
         Panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = selectedHero.GetComponent<Hero>().Attack.ToString();
         Panel.transform.GetChild(7).gameObject.GetComponent<Text>().text = selectedHero.GetComponent<Hero>().Defence.ToString();
-        Panel.transform.GetChild(8).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().AP / selectedHero.GetComponent<Hero>().MaxAP;
+        Panel.transform.GetChild(8).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().MoveAP / selectedHero.GetComponent<Hero>().MoveMaxAP;
     }
 
     IEnumerator WaitNewRay()
     {
         yield return new WaitForSeconds(0.5f);
-        if (SelectedPlayer.GetComponent<Hero>().AP > 0)
+        if (SelectedPlayer.GetComponent<Hero>().MoveAP > 0)
         {
             SetRayHorizontal(SelectedPlayer);
             SetRay(SelectedPlayer);

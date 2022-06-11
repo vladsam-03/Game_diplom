@@ -25,7 +25,7 @@ public class StepNPCNew : MonoBehaviour
             if (transform.position == thisHero.SelectTile.transform.position)
             {
                 step = false;
-                thisHero.AP--;
+                thisHero.MoveAP--;
             }
         }
     }

@@ -1765,7 +1765,7 @@ GameObject:
   - component: {fileID: 470266}
   - component: {fileID: 9510850}
   - component: {fileID: 14325198}
-  - component: {fileID: 11460088}
+  - component: {fileID: 8259712355405025550}
   m_Layer: 0
   m_Name: Goblin_rouge_o
   m_TagString: Untagged
@@ -1827,7 +1827,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.3, z: 0}
---- !u!114 &11460088
+--- !u!114 &8259712355405025550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1836,13 +1836,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 172560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107e70a78028fcf4abe107cab565e94c, type: 3}
+  m_Script: {fileID: 11500000, guid: 254af3861bf51704193a92fc601caa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.7
-  runSpeed: 1.7
-  turnSpeed: 90
-  gravity: 20
+  Name: 
+  SelectTile: {fileID: 0}
+  AttackAP: 2
+  AttackMaxAP: 2
+  MoveAP: 5
+  RegenerateMoveAP: 5
+  MoveMaxAP: 5
+  HP: 20
+  MaxHP: 20
+  MP: 10
+  MaxMP: 10
+  Attack: 5
+  Defence: 5
+  Target: {fileID: 0}
+  step: 0
+  LastTile: {fileID: 0}
+  CurrentTarget: {fileID: 0}
 --- !u!1 &172858
 GameObject:
   m_ObjectHideFlags: 0

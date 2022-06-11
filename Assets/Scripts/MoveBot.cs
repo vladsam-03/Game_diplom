@@ -51,7 +51,7 @@ public class MoveBot : MonoBehaviour
             {
                 SetFirstTarget(bot);
             }
-            for (int i = (int)bot.GetComponent<Hero>().AP; i > 0; i--)
+            for (int i = (int)bot.GetComponent<Hero>().MoveAP; i > 0; i--)
             {
                 //if (Vector3.Distance(bot.transform.position, ) == 30) // атаку сделать не смог)
                 //{
@@ -61,7 +61,7 @@ public class MoveBot : MonoBehaviour
                 {
                     SetTarget(bot);
                 }
-                bot.GetComponent<Hero>().AP--;
+                bot.GetComponent<Hero>().MoveAP--;
                 Tiles = new List<GameObject>();
                 SetRay(bot);
                 if (bot.GetComponent<Enemy>().Target.IsExploredEnemy == false)
@@ -118,12 +118,16 @@ public class MoveBot : MonoBehaviour
                     }
                 }
             }
-            bot.GetComponent<Hero>().AP = 3;
+            bot.GetComponent<Hero>().MoveAP = bot.GetComponent<Hero>().MoveMaxAP;
         }
         foreach (var item in selectHero.Players)
         {
             item.IsCanMove = true;
-            item.AP = item.MaxAP;
+            item.MoveAP += item.RegenerateMoveAP;
+            if (item.MoveAP > item.MoveMaxAP)
+            {
+                item.MoveAP = item.MoveMaxAP;
+            }
         }
     }
 
