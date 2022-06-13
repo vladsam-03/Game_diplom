@@ -7,7 +7,11 @@ public class Enemy : Hero
 {
     public Tile Target;
     public bool step;
-    public GameObject LastTile;
-    public GameObject CurrentTarget;
-
+    public Tile LastTile;
+    public Tile LastLastTile;
+    public Tile CurrentTarget;
+    public EnemyWalkType WalkType;
+    public List<Tile> Zone = new List<Tile>();
+    public int IndexTileZone = 1;
+    public bool IsReturn = true;
 }

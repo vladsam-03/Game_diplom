@@ -9,6 +9,7 @@ public class Hero : MonoBehaviour
     public Button SelectButton;
     public Tile SelectTile;
     public float AttackAP;
+    public float RegenerateAttackAP;
     public float AttackMaxAP;
     public float MoveAP;
     public float RegenerateMoveAP;

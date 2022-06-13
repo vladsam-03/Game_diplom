@@ -21,6 +21,18 @@ public class SelectHero : MonoBehaviour
     private bool isBarrierMinusZ;
     public List<Player> Players;
 
+    public Text Name;
+    public Slider HP;
+    public Text HPCurrent;
+    public Slider MP;
+    public Text MPCurrent;
+    public Text Attack;
+    public Text Defense;
+    public Slider AttackAP;
+    public Text CurrentAttackAP;
+    public Slider MoveAP;
+    public Text CurrentMoveAP;
+
     void Start()
     {
         moveBot = GetComponent<MoveBot>();
@@ -64,35 +76,35 @@ public class SelectHero : MonoBehaviour
                         MoveCameraToPlayer(SelectedPlayer);
                     }
                 }
-                else if (hit.collider.gameObject.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AttackAP > 0
+                else if (hit.collider.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AttackAP > 0
                     && SelectedEnemy == hit.collider.gameObject && Vector3.Distance(SelectedPlayer.transform.position, hit.collider.gameObject.transform.position) == 30
                     && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
-                    hit.collider.gameObject.GetComponent<Enemy>().HP -= SelectedPlayer.GetComponent<Player>().Attack;
-                    if (hit.collider.gameObject.GetComponent<Enemy>().HP > 0)
+                    hit.collider.GetComponent<Enemy>().HP -= SelectedPlayer.GetComponent<Player>().Attack;
+                    if (hit.collider.GetComponent<Enemy>().HP > 0)
                     {
                         MeshRenderer[] meshRenderers = hit.collider.gameObject.transform.GetComponentsInChildren<MeshRenderer>();
                         StartCoroutine(AttackColor(meshRenderers));
                     }
                     SelectedPlayer.GetComponent<Hero>().AttackAP--;
-                    if (hit.collider.gameObject.GetComponent<Enemy>().HP <= 0)
+                    if (hit.collider.GetComponent<Enemy>().HP <= 0)
                     {
                         Vector3 Rip = SelectedEnemy.transform.position;
-                        SelectedEnemy.gameObject.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().IsAttackPlayer = false;
-                        SelectedEnemy.gameObject.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
+                        SelectedEnemy.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().IsAttackPlayer = false;
+                        SelectedEnemy.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
                         float RipRotation = SelectedEnemy.transform.rotation.y;
-                        moveBot.RemoveBot(SelectedEnemy);
+                        moveBot.RemoveBot(SelectedEnemy.GetComponent<Enemy>());
                         Destroy(SelectedEnemy);
                         Panel.SetActive(false);
                         SelectedEnemy = null;
 
-                        int indexbiom = Random.Range(0, RIP.Count);
-                        var Biome = RIP[indexbiom];
-                        GameObject SelectedBiome = Instantiate(Biome.gameObject, new Vector3(Rip.x, Rip.y, Rip.z), Quaternion.Euler(0, RipRotation, 0));
+                        int indexRegion = Random.Range(0, RIP.Count);
+                        var Regione = RIP[indexRegion];
+                        GameObject SelectedRegione = Instantiate(Regione.gameObject, new Vector3(Rip.x, Rip.y, Rip.z), Quaternion.Euler(0, RipRotation, 0));
                     }
                     isPreparation = false;
                 }
-                else if (hit.collider.gameObject.GetComponent<Enemy>() != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                else if (hit.collider.GetComponent<Enemy>() != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     SelectedEnemy = hit.collider.gameObject;
                     isSelectPlayer = false;
@@ -104,17 +116,19 @@ public class SelectHero : MonoBehaviour
                         isPreparation = true;
                     }
                 }
-                else if (hit.collider.gameObject.GetComponent<Tile>() != null
-                    && hit.collider.gameObject.GetComponent<Tile>().CanUse == true
+                else if (hit.collider.GetComponent<Tile>() != null
+                    && hit.collider.GetComponent<Tile>().CanUse == true
                     && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     if (SelectedPlayer.GetComponent<Player>().SelectTile != null)
                     {
                         SelectedPlayer.GetComponent<Player>().SelectTile.CanStep = true;
+                        SelectedPlayer.GetComponent<Player>().SelectTile.CurrentPerson = null;
                     }
                     SelectedPlayer.GetComponent<StepNPCNew>().step = true;
-                    hit.collider.gameObject.GetComponent<Tile>().CanStep = false;
-                    hit.collider.gameObject.GetComponent<Tile>().IsAttackEnemy = true;
+                    hit.collider.GetComponent<Tile>().CanStep = false;
+                    hit.collider.GetComponent<Tile>().CurrentPerson = SelectedPlayer.GetComponent<Hero>();
+                    hit.collider.GetComponent<Tile>().IsAttackEnemy = true;
                     SelectedPlayer.GetComponent<Player>().SelectTile = hit.collider.gameObject.GetComponent<Tile>();
                     DeselectTile();
                     StartCoroutine("WaitNewRay");
@@ -161,12 +175,17 @@ public class SelectHero : MonoBehaviour
 
     private void Stats(GameObject selectedHero)
     {
-        Panel.transform.GetChild(0).gameObject.GetComponent<Text>().text = selectedHero.GetComponent<Hero>().Name;
-        Panel.transform.GetChild(2).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().HP / selectedHero.GetComponent<Hero>().MaxHP;
-        Panel.transform.GetChild(3).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().MP / selectedHero.GetComponent<Hero>().MaxMP;
-        Panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = selectedHero.GetComponent<Hero>().Attack.ToString();
-        Panel.transform.GetChild(7).gameObject.GetComponent<Text>().text = selectedHero.GetComponent<Hero>().Defence.ToString();
-        Panel.transform.GetChild(8).gameObject.GetComponent<Slider>().value = selectedHero.GetComponent<Hero>().MoveAP / selectedHero.GetComponent<Hero>().MoveMaxAP;
+        Name.text = selectedHero.GetComponent<Hero>().Name;
+        HP.value = selectedHero.GetComponent<Hero>().HP / selectedHero.GetComponent<Hero>().MaxHP;
+        HPCurrent.text = selectedHero.GetComponent<Hero>().HP + "/" + selectedHero.GetComponent<Hero>().MaxHP; 
+        MP.value = selectedHero.GetComponent<Hero>().MP / selectedHero.GetComponent<Hero>().MaxMP;
+        MPCurrent.text = selectedHero.GetComponent<Hero>().MP + "/" + selectedHero.GetComponent<Hero>().MaxMP;
+        Attack.text = selectedHero.GetComponent<Hero>().Attack.ToString() + "%";
+        Defense.text = selectedHero.GetComponent<Hero>().Defence.ToString() + "%";
+        AttackAP.value = selectedHero.GetComponent<Hero>().AttackAP / selectedHero.GetComponent<Hero>().AttackMaxAP;
+        CurrentAttackAP.text = selectedHero.GetComponent<Hero>().AttackAP + "/" + selectedHero.GetComponent<Hero>().AttackMaxAP;
+        MoveAP.value = selectedHero.GetComponent<Hero>().MoveAP / selectedHero.GetComponent<Hero>().MoveMaxAP;
+        CurrentMoveAP.text = selectedHero.GetComponent<Hero>().MoveAP + "/" +  selectedHero.GetComponent<Hero>().MoveMaxAP;
     }
 
     IEnumerator WaitNewRay()

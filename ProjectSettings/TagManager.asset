@@ -6,7 +6,7 @@ TagManager:
   tags:
   - barrier
   - tile
-  - ' enemy'
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class MoveBot : MonoBehaviour
 {
-    public static List<GameObject> Bots;
+    public List<Enemy> Enemies = new List<Enemy>();
     private Camera MainCamera;
-    private List<GameObject> Tiles = new List<GameObject>();
+    private List<Tile> Tiles = new List<Tile>();
     [SerializeField] private float speed;
     private bool isMove;
-    public GameObject CurrentBot;
+    public Enemy CurrentBot;
     private SelectHero selectHero;
 
 
@@ -45,42 +45,83 @@ public class MoveBot : MonoBehaviour
     {
         foreach (var item in selectHero.Players)
             item.IsCanMove = false;
-        foreach (var bot in Bots)
+        foreach (var bot in Enemies)
         {
-            if (bot.GetComponent<Enemy>().CurrentTarget == null)
+            for (int i = (int)bot.MoveAP; i > 0; i--)
             {
-                SetFirstTarget(bot);
-            }
-            for (int i = (int)bot.GetComponent<Hero>().MoveAP; i > 0; i--)
-            {
-                //if (Vector3.Distance(bot.transform.position, ) == 30) // атаку сделать не смог)
-                //{
-                //    hit.collider.gameObject.GetComponent<Enemy>().HP -= bot.GetComponent<Enemy>().Attack;
-                //}
-                if (bot.GetComponent<Enemy>().CurrentTarget != null && bot.GetComponent<Enemy>().CurrentTarget.transform == bot.GetComponent<Enemy>().Target.transform)
+                bot.MoveAP--;
+                List<Tile> playerTiles = new List<Tile>();
+                if (bot.CurrentTarget != null)
                 {
-                    SetTarget(bot);
-                }
-                bot.GetComponent<Hero>().MoveAP--;
-                Tiles = new List<GameObject>();
-                SetRay(bot);
-                if (bot.GetComponent<Enemy>().Target.IsExploredEnemy == false)
-                {// возможно здесь сделать так чтобы получать id биома и делать весь биом true
-                    bot.GetComponent<Enemy>().Target.IsExploredEnemy = true;
-                }
-                else
-                {
-                    if (bot.GetComponent<Enemy>().CurrentTarget != null)
+                    if (bot.LastLastTile != null)
                     {
-                        bot.GetComponent<Enemy>().LastTile = bot.GetComponent<Enemy>().CurrentTarget;
-                        bot.GetComponent<Enemy>().LastTile.GetComponent<Tile>().IsAttackPlayer = false;
-                        bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = true;
+                        bot.LastLastTile.Last = false;
                     }
+                    if (bot.LastTile != null)
+                    {
+                        bot.LastLastTile = bot.LastTile;
+                    }
+                    bot.LastTile = bot.CurrentTarget;
+                    bot.LastTile.IsAttackPlayer = false;
+                    bot.LastTile.Last = true;
+                    bot.CurrentTarget.CanStep = true;
+                }
+                if (bot.WalkType == EnemyWalkType.Guard)
+                {
+                    foreach (var tile in bot.CurrentTarget.Region.Tiles)
+                    {
+                        if (tile.CurrentPerson != null)
+                        {
+                            playerTiles.Add(tile);
+                        }
+                    }
+                    if (bot.CurrentTarget == bot.Zone[bot.IndexTileZone])
+                    {
+                        bot.IsReturn = true;
+                        bot.Target = null;
+                    }
+                    if (playerTiles.Count > 0)
+                    {
+                        float min = float.MaxValue;
+                        bot.IsReturn = false;
+
+                        foreach (var tile in playerTiles)
+                        {
+                            float distance = Vector3.Distance(tile.transform.position, bot.CurrentTarget.transform.position);
+                            if (distance < min)
+                            {
+                                min = distance;
+                                bot.Target = tile;
+                            }
+                        }
+                    }
+                    else if (bot.Zone.Count > 0 && bot.Target == null)
+                    {
+                        bot.CurrentTarget = bot.Zone[bot.IndexTileZone];
+                        if (bot.Zone.Count == bot.IndexTileZone)
+                        {
+                            bot.IndexTileZone = 0;
+                        }
+                    }
+                    else if (!bot.IsReturn)
+                    {
+                        bot.Target = bot.Zone[bot.IndexTileZone++];
+                    }
+                }
+                else if (bot.WalkType == EnemyWalkType.Сhaser)
+                {
+
+                }
+
+                if (bot.Target != null)
+                {
+                    Tiles = new List<Tile>();
+                    SetRay(bot);
                     if (Tiles.Count == 0)
                     {
                         break;
                     }
-                    else if (Tiles.Count == 1 && Tiles[0].GetComponent<Tile>().IsExploredEnemy)
+                    else if (Tiles.Count == 1)
                     {
                         Tiles[0].GetComponent<Tile>().Last = false;
                         bot.GetComponent<Enemy>().CurrentTarget = Tiles[0];
@@ -91,7 +132,7 @@ public class MoveBot : MonoBehaviour
 
                         foreach (var tile in Tiles)
                         {
-                            if (!tile.GetComponent<Tile>().Last && tile.GetComponent<Tile>().IsExploredEnemy)
+                            if (!tile.GetComponent<Tile>().Last)
                             {
                                 float distance = Vector3.Distance(tile.transform.position, bot.GetComponent<Enemy>().Target.transform.position);
                                 if (distance < min)
@@ -101,11 +142,15 @@ public class MoveBot : MonoBehaviour
                                     bot.GetComponent<Enemy>().CurrentTarget = tile;
                                 }
                             }
-                            else if (tile.GetComponent<Tile>().Last)
+                            else
                                 tile.GetComponent<Tile>().Last = false;
                         }
                     }
-                    bot.GetComponent<Enemy>().CurrentTarget.GetComponent<Tile>().CanStep = false;
+
+                }
+                if (bot.CurrentTarget != null)
+                {
+                    bot.CurrentTarget.CanStep = false;
                     CurrentBot = bot;
                     isMove = true;
                     while (true)
@@ -118,12 +163,13 @@ public class MoveBot : MonoBehaviour
                     }
                 }
             }
-            bot.GetComponent<Hero>().MoveAP = bot.GetComponent<Hero>().MoveMaxAP;
+            bot.MoveAP = bot.MoveMaxAP;
         }
         foreach (var item in selectHero.Players)
         {
             item.IsCanMove = true;
             item.MoveAP += item.RegenerateMoveAP;
+            item.AttackAP += item.RegenerateAttackAP;
             if (item.MoveAP > item.MoveMaxAP)
             {
                 item.MoveAP = item.MoveMaxAP;
@@ -131,42 +177,8 @@ public class MoveBot : MonoBehaviour
         }
     }
 
-    private void SetTarget(GameObject bot)
-    {
-        SetRay(bot);
-        foreach (var tile in Tiles)
-        {
-            if (tile.GetComponent<Tile>().IsExploredEnemy == false)
-            {
-                bot.GetComponent<Enemy>().Target = tile.GetComponent<Tile>();
-            }
-        }
-    }
 
-    private void SetFirstTarget(GameObject bot)
-    {
-        int rmd = UnityEngine.Random.Range(3, 6);
-        Ray ray = new Ray(new Vector3(bot.transform.position.x, bot.transform.position.y + 30, bot.transform.position.z - 30), bot.transform.up * -30);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            foreach (var tile in hit.collider.gameObject.GetComponent<Tile>().Biom.TilesGameObject)
-            {
-                tile.IsExploredEnemy = true;
-            }
-            while (true)
-            {
-                var tile = hit.collider.gameObject.GetComponent<Tile>().Biom.TilesGameObject[rmd];
-                if (tile.CanStep)
-                {
-                    bot.GetComponent<Enemy>().Target = tile;
-                    break;
-                }
-            }
-        }
-    }
-
-    public void SetRay(GameObject gameObject)
+    public void SetRay(Enemy gameObject)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -194,7 +206,7 @@ public class MoveBot : MonoBehaviour
         }
     }
 
-    private void DoAction(Ray ray, GameObject bot)
+    private void DoAction(Ray ray, Enemy bot)
     {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -203,11 +215,11 @@ public class MoveBot : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<Tile>().CanStep == true)
                 {
-                    GameObject tile = hit.collider.gameObject;
-                    if (bot.GetComponent<Enemy>().LastTile != null && tile.transform == bot.GetComponent<Enemy>().LastTile.transform)
-                    {
-                        tile.GetComponent<Tile>().Last = true;
-                    }
+                    Tile tile = hit.collider.GetComponent<Tile>();
+                    //if (bot.GetComponent<Enemy>().LastTile != null && tile.transform == bot.GetComponent<Enemy>().LastTile.transform)
+                    //{
+                    //    tile.GetComponent<Tile>().Last = true;
+                    //}
                     Tiles.Add(tile);
 
                 }
@@ -215,9 +227,10 @@ public class MoveBot : MonoBehaviour
         }
     }
 
-    public void RemoveBot(GameObject bot)
+    public void RemoveBot(Enemy bot)
     {
-        Bots.Remove(bot);
+        Enemies.Remove(bot);
     }
 
 }
+

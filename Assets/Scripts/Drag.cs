@@ -13,7 +13,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Start()
     {
         canvas = GameObject.Find("Canvas").transform;
-        player = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void OnBeginDrag(PointerEventData eventData)

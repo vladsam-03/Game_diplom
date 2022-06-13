@@ -52,10 +52,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469744793864
@@ -1014,10 +1013,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469786686446
@@ -1490,10 +1488,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469810779464
@@ -1966,10 +1963,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469825492551
@@ -2442,10 +2438,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469862265416
@@ -2513,10 +2508,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469863386121
@@ -3313,10 +3307,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469889122789
@@ -3465,10 +3458,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469893840409
@@ -4184,10 +4176,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469946612790
@@ -4741,10 +4732,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347469984837408
@@ -5541,10 +5531,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470033197442
@@ -6017,10 +6006,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470063513409
@@ -6574,10 +6562,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470096786080
@@ -6645,10 +6632,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470099413257
@@ -6959,10 +6945,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470117965572
@@ -8164,10 +8149,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470195804678
@@ -8235,10 +8219,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470205305291
@@ -8387,10 +8370,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470210772520
@@ -8863,10 +8845,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470238957111
@@ -9015,10 +8996,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470242458863
@@ -9896,10 +9876,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470312858100
@@ -10534,10 +10513,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470356982284
@@ -10605,10 +10583,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470363278453
@@ -10919,10 +10896,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470388280348
@@ -11071,10 +11047,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470412538567
@@ -11223,10 +11198,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470420667786
@@ -11375,10 +11349,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470423411340
@@ -11527,10 +11500,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470437440299
@@ -11598,10 +11570,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470439651556
@@ -11912,10 +11883,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470458765591
@@ -12307,10 +12277,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470474043234
@@ -12459,10 +12428,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470480942562
@@ -12935,10 +12903,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470531966108
@@ -13006,10 +12973,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470540988088
@@ -13401,10 +13367,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470567400235
@@ -13472,10 +13437,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470578320135
@@ -13543,10 +13507,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470581241268
@@ -13695,10 +13658,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470591932175
@@ -14414,10 +14376,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470647548265
@@ -15052,10 +15013,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470681658227
@@ -15690,10 +15650,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470711472507
@@ -16895,10 +16854,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470785671353
@@ -16966,10 +16924,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470787492574
@@ -17199,10 +17156,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470807796609
@@ -17351,10 +17307,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470810394756
@@ -18070,10 +18025,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470858381094
@@ -18384,10 +18338,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470900593993
@@ -18536,10 +18489,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470905623931
@@ -18769,10 +18721,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470913123171
@@ -19083,10 +19034,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470939699929
@@ -19397,10 +19347,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470965594788
@@ -19630,10 +19579,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470993330123
@@ -19701,10 +19649,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347470995576242
@@ -19853,10 +19800,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471003128182
@@ -20977,10 +20923,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471075448592
@@ -21453,10 +21398,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471125346329
@@ -22172,10 +22116,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471182943416
@@ -22567,10 +22510,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471206262108
@@ -22638,10 +22580,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471215365399
@@ -22952,10 +22893,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471226588024
@@ -23671,10 +23611,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471258699263
@@ -23742,10 +23681,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471267566691
@@ -24299,10 +24237,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471335432833
@@ -25180,10 +25117,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471397209099
@@ -25251,10 +25187,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471397831512
@@ -25727,10 +25662,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471425704597
@@ -26572,10 +26506,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471485382512
@@ -27129,10 +27062,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471522229126
@@ -27524,10 +27456,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471540714525
@@ -27838,10 +27769,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471577633489
@@ -27990,10 +27920,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471590341645
@@ -28061,10 +27990,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471590611756
@@ -29023,10 +28951,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471636422870
@@ -29661,10 +29588,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471678536538
@@ -30137,10 +30063,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471728903030
@@ -31261,10 +31186,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471835941720
@@ -31332,10 +31256,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471840548726
@@ -31403,10 +31326,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471842343251
@@ -31555,10 +31477,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471856890202
@@ -31788,10 +31709,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471864427748
@@ -32102,10 +32022,9 @@ MonoBehaviour:
   CanStep: 1
   CanUse: 0
   IsExploredPlayer: 0
-  IsExploredEnemy: 0
   IsAttackPlayer: 0
   IsAttackEnemy: 0
-  Biom: {fileID: 0}
+  Region: {fileID: 3814347471465484509}
   CurrentPerson: {fileID: 0}
   Last: 0
 --- !u!65 &3814347471886476095
@@ -32213,7 +32132,6 @@ GameObject:
   - component: {fileID: 6212070404569584386}
   - component: {fileID: 6212070404569584387}
   - component: {fileID: 6212070404569584396}
-  - component: {fileID: 7789799822065574971}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -32284,22 +32202,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7789799822065574971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212070404569584398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d5c51f7ec064349b4b00502ce3cec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TileCount: 81
-  barrierCount: 9
-  TypeBiome: 0
-  Tiles:
-  - {fileID: 7471139934853815569, guid: bf29942d1c84a704da817ed8a6a55bcc, type: 3}
-  - {fileID: 4585038100391060110, guid: d52b11222c7311c4e9386f6ca189be80, type: 3}
-  TilesGameObject: []

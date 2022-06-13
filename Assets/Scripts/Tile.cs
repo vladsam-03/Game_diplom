@@ -8,11 +8,10 @@ public class Tile : MonoBehaviour
     public bool CanStep;
     public bool CanUse;
     public bool IsExploredPlayer;
-    public bool IsExploredEnemy;
     public bool IsAttackPlayer;
     public bool IsAttackEnemy;
-    public Biom Biom;
-    public Hero CurrentPerson; //новое
+    public Region Region;
+    public Hero CurrentPerson; 
     public bool Last;
 
 }
