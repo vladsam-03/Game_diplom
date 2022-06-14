@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> panels;
+    [SerializeField] private GameObject menu;
     [SerializeField] private GameObject heroPanel;
-    private bool isHeroPanelActive;
+    [SerializeField] private GameObject settings;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            foreach (var panel in panels)
-            {
-            if (panel.activeSelf)
-                panel.SetActive(false);
-            else
-                panel.SetActive(true);
-            }
             if (heroPanel.activeSelf)
             {
-                isHeroPanelActive = true;
                 heroPanel.SetActive(false);
             }
-            else if (isHeroPanelActive)
+            else if (menu.activeSelf)
             {
-                isHeroPanelActive = false;
-                heroPanel.SetActive(true);
+                menu.SetActive(false);
             }
-
+            else if (!menu.activeSelf)
+            {
+                if (settings.activeSelf)
+                {
+                    settings.SetActive(false);
+                }
+                    menu.SetActive(true);
+            }
         }
 
     }

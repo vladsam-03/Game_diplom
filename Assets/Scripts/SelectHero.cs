@@ -75,12 +75,16 @@ public class SelectHero : MonoBehaviour
                         Panel.SetActive(true);
                         MoveCameraToPlayer(SelectedPlayer);
                     }
+                    else if (SelectedPlayer.GetComponent<Hero>().AttackAP > 0 && SelectedPlayer.GetComponent<Player>().IsCanMove)
+                    {
+                        SetRay(SelectedPlayer);
+                    }
                 }
                 else if (hit.collider.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AttackAP > 0
                     && SelectedEnemy == hit.collider.gameObject && Vector3.Distance(SelectedPlayer.transform.position, hit.collider.gameObject.transform.position) == 30
                     && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
-                    hit.collider.GetComponent<Enemy>().HP -= SelectedPlayer.GetComponent<Player>().Attack;
+                    hit.collider.GetComponent<Enemy>().HP -= SelectedPlayer.GetComponent<Player>().Attack * (1 - hit.collider.GetComponent<Enemy>().Defence / 100);
                     if (hit.collider.GetComponent<Enemy>().HP > 0)
                     {
                         MeshRenderer[] meshRenderers = hit.collider.gameObject.transform.GetComponentsInChildren<MeshRenderer>();
@@ -127,7 +131,7 @@ public class SelectHero : MonoBehaviour
                     }
                     SelectedPlayer.GetComponent<StepNPCNew>().step = true;
                     hit.collider.GetComponent<Tile>().CanStep = false;
-                    hit.collider.GetComponent<Tile>().CurrentPerson = SelectedPlayer.GetComponent<Hero>();
+                    hit.collider.GetComponent<Tile>().CurrentPerson = SelectedPlayer.GetComponent<Player>();
                     hit.collider.GetComponent<Tile>().IsAttackEnemy = true;
                     SelectedPlayer.GetComponent<Player>().SelectTile = hit.collider.gameObject.GetComponent<Tile>();
                     DeselectTile();
@@ -180,7 +184,7 @@ public class SelectHero : MonoBehaviour
         HPCurrent.text = selectedHero.GetComponent<Hero>().HP + "/" + selectedHero.GetComponent<Hero>().MaxHP; 
         MP.value = selectedHero.GetComponent<Hero>().MP / selectedHero.GetComponent<Hero>().MaxMP;
         MPCurrent.text = selectedHero.GetComponent<Hero>().MP + "/" + selectedHero.GetComponent<Hero>().MaxMP;
-        Attack.text = selectedHero.GetComponent<Hero>().Attack.ToString() + "%";
+        Attack.text = selectedHero.GetComponent<Hero>().Attack.ToString();
         Defense.text = selectedHero.GetComponent<Hero>().Defence.ToString() + "%";
         AttackAP.value = selectedHero.GetComponent<Hero>().AttackAP / selectedHero.GetComponent<Hero>().AttackMaxAP;
         CurrentAttackAP.text = selectedHero.GetComponent<Hero>().AttackAP + "/" + selectedHero.GetComponent<Hero>().AttackMaxAP;
@@ -191,11 +195,8 @@ public class SelectHero : MonoBehaviour
     IEnumerator WaitNewRay()
     {
         yield return new WaitForSeconds(0.5f);
-        if (SelectedPlayer.GetComponent<Hero>().MoveAP > 0)
-        {
             SetRayHorizontal(SelectedPlayer);
             SetRay(SelectedPlayer);
-        }
     }
 
     IEnumerator AttackColor(MeshRenderer[] meshRenderers)
@@ -342,7 +343,7 @@ public class SelectHero : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Tile>() != null)
             {
-                if (hit.collider.gameObject.GetComponent<Tile>().CanStep == true)
+                if (hit.collider.gameObject.GetComponent<Tile>().CanStep == true && SelectedPlayer.GetComponent<Hero>().MoveAP > 0)
                 {
                     hit.collider.gameObject.GetComponent<Tile>().CanUse = true;
                     hit.collider.gameObject.GetComponent<Tile>().IsAttackEnemy = false;

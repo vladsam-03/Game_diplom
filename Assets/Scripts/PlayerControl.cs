@@ -96,7 +96,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         // если нажата средн€€ мышка
-        if (Input.GetAxis("Fire1") > 0)
+        if (Input.GetAxis("Fire3") > 0)
         {
             bool proverka = true;
             mX = -mX * cam_sens_move;

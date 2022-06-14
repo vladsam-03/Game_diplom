@@ -16,6 +16,7 @@ public class MoveBot : MonoBehaviour
     private SelectHero selectHero;
 
 
+
     private void Start()
     {
         MainCamera = Camera.main;
@@ -47,123 +48,149 @@ public class MoveBot : MonoBehaviour
             item.IsCanMove = false;
         foreach (var bot in Enemies)
         {
-            for (int i = (int)bot.MoveAP; i > 0; i--)
+            while (true)
             {
-                bot.MoveAP--;
                 List<Tile> playerTiles = new List<Tile>();
-                if (bot.CurrentTarget != null)
-                {
-                    if (bot.LastLastTile != null)
-                    {
-                        bot.LastLastTile.Last = false;
-                    }
-                    if (bot.LastTile != null)
-                    {
-                        bot.LastLastTile = bot.LastTile;
-                    }
-                    bot.LastTile = bot.CurrentTarget;
-                    bot.LastTile.IsAttackPlayer = false;
-                    bot.LastTile.Last = true;
-                    bot.CurrentTarget.CanStep = true;
-                }
+                Tiles = new List<Tile>();
                 if (bot.WalkType == EnemyWalkType.Guard)
                 {
-                    foreach (var tile in bot.CurrentTarget.Region.Tiles)
+                    ;
+                }
+                SetRay(bot);
+                if (bot.TargetPlayer != null && bot.AttackAP > 0)
+                {
+                    bot.AttackAP--;
+                    bot.TargetPlayer.HP -= bot.Attack * (1 - bot.TargetPlayer.Defence / 100);
+                    bot.TargetPlayer = null;
+                }
+                else if (bot.TargetPlayer == null && bot.MoveAP > 0)
+                {
+                    if (bot.CurrentTarget != null)
                     {
-                        if (tile.CurrentPerson != null)
+                        if (bot.LastLastTile != null)
                         {
-                            playerTiles.Add(tile);
+                            bot.LastLastTile.Last = false;
                         }
-                    }
-                    if (bot.CurrentTarget == bot.Zone[bot.IndexTileZone])
-                    {
-                        bot.IsReturn = true;
-                        bot.Target = null;
-                    }
-                    if (playerTiles.Count > 0)
-                    {
-                        float min = float.MaxValue;
-                        bot.IsReturn = false;
-
-                        foreach (var tile in playerTiles)
+                        if (bot.LastTile != null)
                         {
-                            float distance = Vector3.Distance(tile.transform.position, bot.CurrentTarget.transform.position);
-                            if (distance < min)
+                            bot.LastLastTile = bot.LastTile;
+                        }
+                        bot.LastTile = bot.CurrentTarget;
+                        bot.LastTile.IsAttackPlayer = false;
+                        bot.LastTile.Last = true;
+                        bot.CurrentTarget.CanStep = true;
+                    }
+                    if (bot.WalkType == EnemyWalkType.Guard)
+                    {
+                        foreach (var tile in bot.CurrentTarget.Region.Tiles)
+                        {
+                            if (tile.CurrentPerson != null)
                             {
-                                min = distance;
-                                bot.Target = tile;
+                                playerTiles.Add(tile);
                             }
                         }
-                    }
-                    else if (bot.Zone.Count > 0 && bot.Target == null)
-                    {
-                        bot.CurrentTarget = bot.Zone[bot.IndexTileZone];
-                        if (bot.Zone.Count == bot.IndexTileZone)
+                        if (bot.CurrentTarget == bot.Zone[bot.IndexTileZone])
                         {
-                            bot.IndexTileZone = 0;
+                            bot.IsReturn = true;
+                            bot.Target = null;
                         }
-                    }
-                    else if (!bot.IsReturn)
-                    {
-                        bot.Target = bot.Zone[bot.IndexTileZone++];
-                    }
-                }
-                else if (bot.WalkType == EnemyWalkType.Ñhaser)
-                {
-
-                }
-
-                if (bot.Target != null)
-                {
-                    Tiles = new List<Tile>();
-                    SetRay(bot);
-                    if (Tiles.Count == 0)
-                    {
-                        break;
-                    }
-                    else if (Tiles.Count == 1)
-                    {
-                        Tiles[0].GetComponent<Tile>().Last = false;
-                        bot.GetComponent<Enemy>().CurrentTarget = Tiles[0];
-                    }
-                    else
-                    {
-                        float min = float.MaxValue;
-
-                        foreach (var tile in Tiles)
+                        if (playerTiles.Count > 0)
                         {
-                            if (!tile.GetComponent<Tile>().Last)
+                            float min = float.MaxValue;
+                            bot.IsReturn = false;
+
+                            foreach (var tile in playerTiles)
                             {
-                                float distance = Vector3.Distance(tile.transform.position, bot.GetComponent<Enemy>().Target.transform.position);
+                                float distance = Vector3.Distance(tile.transform.position, bot.CurrentTarget.transform.position);
                                 if (distance < min)
                                 {
                                     min = distance;
-                                    tile.GetComponent<Tile>().IsAttackPlayer = true;
-                                    bot.GetComponent<Enemy>().CurrentTarget = tile;
+                                    bot.Target = tile;
                                 }
                             }
-                            else
-                                tile.GetComponent<Tile>().Last = false;
                         }
+                        else if (bot.Zone.Count > 0 && bot.Target == null)
+                        {
+                            bot.CurrentTarget = bot.Zone[bot.IndexTileZone++];
+                            if (bot.Zone.Count == bot.IndexTileZone)
+                            {
+                                bot.IndexTileZone = 0;
+                            }
+                        }
+                        else if (!bot.IsReturn)
+                        {
+                            bot.Target = bot.Zone[bot.IndexTileZone];
+                        }
+                        bot.MoveAP--;
+                    }
+                    else if (bot.WalkType == EnemyWalkType.Ñhaser)
+                    {
+                        break;
                     }
 
-                }
-                if (bot.CurrentTarget != null)
-                {
-                    bot.CurrentTarget.CanStep = false;
-                    CurrentBot = bot;
-                    isMove = true;
-                    while (true)
+                    if (bot.Target != null)
                     {
-                        if (isMove == false)
+                        if (Tiles.Count == 0)
                         {
                             break;
                         }
-                        yield return null;
+                        else if (Tiles.Count == 1)
+                        {
+                            Tiles[0].GetComponent<Tile>().Last = false;
+                            bot.GetComponent<Enemy>().CurrentTarget = Tiles[0];
+                        }
+                        else
+                        {
+                            float min = float.MaxValue;
+
+                            foreach (var tile in Tiles)
+                            {
+                                if (!tile.GetComponent<Tile>().Last)
+                                {
+                                    float distance = Vector3.Distance(tile.transform.position, bot.GetComponent<Enemy>().Target.transform.position);
+                                    if (distance < min)
+                                    {
+                                        min = distance;
+                                        tile.GetComponent<Tile>().IsAttackPlayer = true;
+                                        bot.GetComponent<Enemy>().CurrentTarget = tile;
+                                    }
+                                }
+                                else
+                                    tile.GetComponent<Tile>().Last = false;
+                            }
+                        }
+
+                    }
+                    if (bot.CurrentTarget != null)
+                    {
+                        bot.CurrentTarget.CanStep = false;
+                        CurrentBot = bot;
+                        isMove = true;
+                        while (true)
+                        {
+                            if (isMove == false)
+                            {
+                                break;
+                            }
+                            yield return null;
+                        }
                     }
                 }
+                else
+                    break;
             }
-            bot.MoveAP = bot.MoveMaxAP;
+                bot.MoveAP = bot.MoveMaxAP;
+                bot.AttackAP = bot.AttackMaxAP; 
+            bot.MoveAP += bot.RegenerateMoveAP;
+            bot.AttackAP += bot.RegenerateAttackAP;
+            if (bot.MoveAP > bot.MoveMaxAP)
+            {
+                bot.MoveAP = bot.MoveMaxAP;
+            }
+            if (bot.AttackAP > bot.AttackMaxAP)
+            {
+                bot.AttackAP = bot.AttackMaxAP;
+            }
         }
         foreach (var item in selectHero.Players)
         {
@@ -173,6 +200,10 @@ public class MoveBot : MonoBehaviour
             if (item.MoveAP > item.MoveMaxAP)
             {
                 item.MoveAP = item.MoveMaxAP;
+            }
+            if (item.AttackAP > item.AttackMaxAP)
+            {
+                item.AttackAP = item.AttackMaxAP;
             }
         }
     }
@@ -213,18 +244,28 @@ public class MoveBot : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Tile>() != null)
             {
-                if (hit.collider.gameObject.GetComponent<Tile>().CanStep == true)
+                Tile tile = hit.collider.GetComponent<Tile>();
+                if (tile.CurrentPerson != null)
                 {
-                    Tile tile = hit.collider.GetComponent<Tile>();
+                    bot.TargetPlayer = tile.CurrentPerson;
+                }
+                else if (hit.collider.gameObject.GetComponent<Tile>().CanStep == true)
+                {
                     //if (bot.GetComponent<Enemy>().LastTile != null && tile.transform == bot.GetComponent<Enemy>().LastTile.transform)
                     //{
                     //    tile.GetComponent<Tile>().Last = true;
                     //}
                     Tiles.Add(tile);
-
                 }
             }
         }
+    }
+
+    private void AttackPlayer(Enemy enemy)
+    {
+        enemy.AttackAP--;
+        enemy.TargetPlayer.HP -= enemy.Attack * (1 - enemy.TargetPlayer.Defence / 100);
+        enemy.TargetPlayer = null;
     }
 
     public void RemoveBot(Enemy bot)

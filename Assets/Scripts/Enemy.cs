@@ -14,4 +14,5 @@ public class Enemy : Hero
     public List<Tile> Zone = new List<Tile>();
     public int IndexTileZone = 1;
     public bool IsReturn = true;
+    public Player TargetPlayer;
 }

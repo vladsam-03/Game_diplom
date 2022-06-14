@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
     public bool IsAttackPlayer;
     public bool IsAttackEnemy;
     public Region Region;
-    public Hero CurrentPerson; 
+    public Player CurrentPerson; 
     public bool Last;
 
 }
