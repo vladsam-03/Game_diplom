@@ -2249,6 +2249,7 @@ MonoBehaviour:
   Name: Goblin warrior
   SelectTile: {fileID: 0}
   AttackAP: 1
+  RegenerateAttackAP: 1
   AttackMaxAP: 1
   MoveAP: 3
   RegenerateMoveAP: 2
@@ -2268,6 +2269,7 @@ MonoBehaviour:
   Zone: []
   IndexTileZone: 1
   IsReturn: 1
+  TargetPlayer: {fileID: 0}
 --- !u!1 &186020
 GameObject:
   m_ObjectHideFlags: 0

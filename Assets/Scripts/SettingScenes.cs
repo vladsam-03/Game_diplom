@@ -11,6 +11,7 @@ public class SettingScenes : MonoBehaviour
     public Slider SliderBrightness;
     public Slider SliderContrast;
     public Slider SliderSaturation;
+    
 
     public void GameScene()
     {
@@ -45,4 +46,5 @@ public class SettingScenes : MonoBehaviour
         SliderContrast.value = 1;
         SliderSaturation.value = 1;
     }
+
 }

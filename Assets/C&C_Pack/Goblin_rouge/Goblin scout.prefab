@@ -1842,6 +1842,7 @@ MonoBehaviour:
   Name: Goblin scout
   SelectTile: {fileID: 0}
   AttackAP: 2
+  RegenerateAttackAP: 2
   AttackMaxAP: 2
   MoveAP: 6
   RegenerateMoveAP: 3
@@ -1855,10 +1856,13 @@ MonoBehaviour:
   Target: {fileID: 0}
   step: 0
   LastTile: {fileID: 0}
+  LastLastTile: {fileID: 0}
   CurrentTarget: {fileID: 0}
   WalkType: 1
   Zone: []
   IndexTileZone: 0
+  IsReturn: 1
+  TargetPlayer: {fileID: 0}
 --- !u!1 &172858
 GameObject:
   m_ObjectHideFlags: 0

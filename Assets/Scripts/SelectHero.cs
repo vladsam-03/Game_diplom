@@ -33,6 +33,7 @@ public class SelectHero : MonoBehaviour
     public Slider MoveAP;
     public Text CurrentMoveAP;
 
+
     void Start()
     {
         moveBot = GetComponent<MoveBot>();
@@ -55,6 +56,7 @@ public class SelectHero : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<Player>() != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && hit.collider.gameObject.GetComponent<StepNPCNew>().step != true)
                 {
                     SelectedPlayer = hit.collider.gameObject;
+                    MoveCameraToPlayer(SelectedPlayer);
                     isSelectPlayer = true;
                     if (SelectedPlayer.GetComponent<Hero>().MoveAP > 0 && SelectedPlayer.GetComponent<Player>().IsCanMove)
                     {
@@ -73,11 +75,30 @@ public class SelectHero : MonoBehaviour
                         SetRayHorizontal(SelectedPlayer);
                         SetRay(SelectedPlayer);
                         Panel.SetActive(true);
-                        MoveCameraToPlayer(SelectedPlayer);
+                        foreach (var tile in Tiles)
+                        {
+                            if (tile.GetComponent<Tile>().Region != SelectedPlayer.GetComponent<Player>().SelectTile.Region)
+                            {
+                                SelectedPlayer.GetComponent<Player>().OtherRegions.Add(tile.GetComponent<Tile>().Region);
+                            }
+                        }
                     }
                     else if (SelectedPlayer.GetComponent<Hero>().AttackAP > 0 && SelectedPlayer.GetComponent<Player>().IsCanMove)
                     {
                         SetRay(SelectedPlayer);
+                    }
+                }
+                else if (hit.collider.transform.parent.GetComponent<Region>() != null && SelectedPlayer != null 
+                    && SelectedPlayer.GetComponent<Player>().OtherRegions.Contains(hit.collider.transform.parent.GetComponent<Region>()) 
+                    && !hit.collider.transform.parent.GetComponent<Region>().IsVisited)
+                {
+                    SelectedPlayer.GetComponent<Player>().MoveAP--;
+                    Region region = hit.collider.transform.parent.GetComponent<Region>();
+                    region.IsVisited = true;
+                    region.Fog.SetActive(false);
+                    foreach (var border in region.Borders)
+                    {
+                        border.SetActive(false);
                     }
                 }
                 else if (hit.collider.GetComponent<Enemy>() != null && SelectedPlayer != null && SelectedEnemy != null && isPreparation && SelectedPlayer.GetComponent<Hero>().AttackAP > 0
@@ -190,6 +211,38 @@ public class SelectHero : MonoBehaviour
         CurrentAttackAP.text = selectedHero.GetComponent<Hero>().AttackAP + "/" + selectedHero.GetComponent<Hero>().AttackMaxAP;
         MoveAP.value = selectedHero.GetComponent<Hero>().MoveAP / selectedHero.GetComponent<Hero>().MoveMaxAP;
         CurrentMoveAP.text = selectedHero.GetComponent<Hero>().MoveAP + "/" +  selectedHero.GetComponent<Hero>().MoveMaxAP;
+    }
+
+
+    public void UpHP(GameObject selectedHero)
+    {
+        selectedHero.GetComponent<Hero>().HP = 100;
+        selectedHero.GetComponent<Hero>().MaxHP = 100;
+    }
+    public void UpMoveAP(GameObject selectedHero)
+    {
+        SelectedPlayer.GetComponent<Hero>().HP = 100;
+        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
+    }
+    public void UpAttackAP(GameObject selectedHero)
+    {
+        SelectedPlayer.GetComponent<Hero>().HP = 100;
+        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
+    }
+    public void TeleportToSmallVillage(GameObject selectedHero)
+    {
+        SelectedPlayer.GetComponent<Hero>().HP = 100;
+        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
+    }
+    public void TeleportToBigVillage(GameObject selectedHero)
+    {
+        SelectedPlayer.GetComponent<Hero>().HP = 100;
+        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
+    }
+    public void Kill(GameObject selectedHero)
+    {
+        SelectedPlayer.GetComponent<Hero>().HP = 100;
+        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
     }
 
     IEnumerator WaitNewRay()
