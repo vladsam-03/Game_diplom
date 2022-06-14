@@ -214,36 +214,6 @@ public class SelectHero : MonoBehaviour
     }
 
 
-    public void UpHP(GameObject selectedHero)
-    {
-        selectedHero.GetComponent<Hero>().HP = 100;
-        selectedHero.GetComponent<Hero>().MaxHP = 100;
-    }
-    public void UpMoveAP(GameObject selectedHero)
-    {
-        SelectedPlayer.GetComponent<Hero>().HP = 100;
-        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
-    }
-    public void UpAttackAP(GameObject selectedHero)
-    {
-        SelectedPlayer.GetComponent<Hero>().HP = 100;
-        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
-    }
-    public void TeleportToSmallVillage(GameObject selectedHero)
-    {
-        SelectedPlayer.GetComponent<Hero>().HP = 100;
-        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
-    }
-    public void TeleportToBigVillage(GameObject selectedHero)
-    {
-        SelectedPlayer.GetComponent<Hero>().HP = 100;
-        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
-    }
-    public void Kill(GameObject selectedHero)
-    {
-        SelectedPlayer.GetComponent<Hero>().HP = 100;
-        SelectedPlayer.GetComponent<Hero>().MaxHP = 100;
-    }
 
     IEnumerator WaitNewRay()
     {
